@@ -9,7 +9,6 @@
             <form action="#" @submit.prevent="submit">
               <div class="form-group row">
                 <label for="name" class="col-md-7 col-form-label text-md-left">Name</label>
-
                 <div class="col-md-7">
                   <input
                     id="name"
@@ -23,10 +22,8 @@
                   />
                 </div>
               </div>
-
               <div class="form-group row">
                 <label for="email" class="col-md-7 col-form-label text-md-left">Email</label>
-
                 <div class="col-md-7">
                   <input
                     id="email"
@@ -40,10 +37,8 @@
                   />
                 </div>
               </div>
-
               <div class="form-group row">
                 <label for="password" class="col-md-7 col-form-label text-md-left">Password</label>
-
                 <div class="col-md-7">
                   <input
                     id="password"
@@ -55,7 +50,6 @@
                   />
                 </div>
               </div>
-
               <div class="form-group row mb-0">
                 <div class="col-md-7">
                   <button type="submit" class="btn btn-primary">Register</button>
@@ -71,7 +65,6 @@
 
 <script>
 import firebase from "firebase";
-
 export default {
   data() {
     return {
@@ -94,7 +87,7 @@ export default {
               displayName: this.form.name
             })
             .then(() => {
-              this.$router.replace({ name: "Dashboard1" });
+              this.$router.go(this.$router.replace({ name: "Dashboard" }));
             });
         })
         .catch(err => {

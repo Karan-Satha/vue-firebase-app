@@ -3,8 +3,7 @@ import Router from "vue-router";
 import Login from "../components/Login";
 import Register from "../components/Register";
 import Dashboard from "../components/Dashboard";
-import Dashboard1 from "../components/Dashboard1";
-
+import firebase from "firebase";
 Vue.use(Router);
 
 const router = new Router({
@@ -13,7 +12,7 @@ const router = new Router({
   routes: [
     {
       path: "/login",
-      name: "login",
+      name: "Login",
       component: Login
     },
     {
@@ -24,14 +23,25 @@ const router = new Router({
     {
       path: "/dashboard",
       name: "Dashboard",
-      component: Dashboard
-    },
-    {
-      path: "/dashboard1",
-      name: "Dashboard1",
-      component: Dashboard1
+      component: Dashboard,
+      meta: {
+        requiresAuth: true
+      }
     }
   ]
+});
+
+// Restrict user access to dashboard
+router.beforeEach((to, from, next) => {
+  const currentUser = firebase.auth().currentUser;
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+  if (requiresAuth && !currentUser) {
+    next("/login");
+  } else if (!requiresAuth && currentUser) {
+    next("/dashboard");
+  } else {
+    next();
+  }
 });
 
 export default router;
