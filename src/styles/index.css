@@ -99,3 +99,11 @@ span {
   position: fixed;
   top: 12px;
 }
+
+@media only screen and (max-width: 850px) {
+  .navbar-brand,
+  .navbar-brand:hover,
+  .navbar-brand:visited {
+    color: #000 !important;
+  }
+}
