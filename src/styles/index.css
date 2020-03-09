@@ -1,3 +1,5 @@
+/* css for login and register page */
+
 input.form-control {
   height: 50px;
   border-radius: 0px;
@@ -47,6 +49,8 @@ input.form-control:focus {
 .card-body {
   font-weight: bold;
 }
+
+/* css for navigation bar */
 
 .nav-link {
   color: #fff !important;
@@ -99,6 +103,8 @@ span {
   position: fixed;
   top: 12px;
 }
+
+/* media query for nav header */
 
 @media only screen and (max-width: 850px) {
   .navbar-brand,
