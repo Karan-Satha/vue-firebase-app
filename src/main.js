@@ -29,8 +29,14 @@ firebase.auth().onAuthStateChanged(user => {
 
 Vue.use(BootstrapVue);
 
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount("#app");
+// Keep authentication state alive
+let app = "";
+firebase.auth().onAuthStateChanged(() => {
+  if (!app) {
+    app = new Vue({
+      router,
+      store,
+      render: h => h(App)
+    }).$mount("#app");
+  }
+});
