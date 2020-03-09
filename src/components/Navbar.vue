@@ -1,5 +1,8 @@
 <template>
   <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+    <router-link to="/">
+      <img :src="require('@/assets/logo.png')" alt="logo" class="logo" />
+    </router-link>
     <div class="container">
       <router-link to="/" class="navbar-brand">Vue Firebase App</router-link>
       <button
